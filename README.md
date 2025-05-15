@@ -7,5 +7,5 @@ Commands :
 - /restarting <duration> | Announce an Restarting messages with custom prefix and countdown
 ----
 Requirement :
-- (Maintaince)[https://www.spigotmc.org/resources/maintenance-bungee-and-spigot-support.40699/] | 
+- [Maintaince](https://www.spigotmc.org/resources/maintenance-bungee-and-spigot-support.40699/) | Maintaince, Whitelist with custom MOTD plugin
 
