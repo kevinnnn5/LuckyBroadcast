@@ -1,0 +1,28 @@
+name: LuckyBroadcast
+version: 2.7
+main: com.rnxp.luckybroadcast.LuckyBroadcast
+author: rnxp
+api-version: 1.13
+commands:
+  maintenance:
+    description: Starts a maintenance countdown.
+    usage: /<command> <seconds|cancel>
+  restarting:
+    description: Starts a restarting countdown.
+    usage: /<command> <seconds|cancel>
+  bc:
+    description: Broadcasts a message to all players.
+    usage: /<command> <message>
+permissions:
+  luckybroadcast.restarting:
+    description: Allows the user to use the /restarting command.
+    default: op
+  luckybroadcast.maintenance:
+    description: Allows the user to use the /maintenance command.
+    default: op
+  luckybroadcast.broadcast:
+    description: Allows the user to use the /bc command.
+    default: op
+  luckybroadcast.admin:
+    description: Grants access to all commands.
+    default: op
