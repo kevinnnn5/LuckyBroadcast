@@ -48,8 +48,6 @@ public class LuckyBroadcast extends JavaPlugin implements CommandExecutor {
         }
         getLogger().info("LuckyBroadcast has been disabled.");
     }
-
-    // Permission check helper - returns true if sender has the required permission or the admin permission
     private boolean hasPermission(CommandSender sender, String perm) {
         return sender.hasPermission(perm) || sender.hasPermission("luckybroadcast.admin");
     }
@@ -119,14 +117,12 @@ public class LuckyBroadcast extends JavaPlugin implements CommandExecutor {
                                     }
                                     String titleText = ChatColor.RED + "Starting Maintenance" + (dotCount == 0 ? "" : " " + dots.toString());
                                     for (Player player : Bukkit.getOnlinePlayers()) {
-                                        // Play bit note block sound during animation
                                         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1f, 1f);
                                         player.sendTitle(titleText, ChatColor.YELLOW + "", 10, 20, 10);
                                     }
                                     dotCount++;
                                 } else {
                                     cancel();
-                                    // Execute /mt on after the dot animation ends
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "mt on");
                                 }
                             }
@@ -164,7 +160,6 @@ public class LuckyBroadcast extends JavaPlugin implements CommandExecutor {
                 if (restartingCountdownTask != null) {
                     restartingCountdownTask.cancel();
                     restartingCountdownTask = null;
-                    // Show "Canceled" title to the command sender
                     if (sender instanceof Player) {
                         ((Player)sender).sendTitle(ChatColor.RED + "Canceled", "", 10, 60, 10);
                     }
@@ -202,8 +197,6 @@ public class LuckyBroadcast extends JavaPlugin implements CommandExecutor {
                         cancel();
 
                         Bukkit.broadcastMessage(systemPrefix + ChatColor.RED + "Restarting now...");
-
-                        // Start dot animation after restarting countdown ends
                         new BukkitRunnable() {
                             int dotCount = 0;
 
@@ -215,15 +208,13 @@ public class LuckyBroadcast extends JavaPlugin implements CommandExecutor {
                                         dots.append(". ");
                                     }
                                     String titleText = ChatColor.RED + "Restarting" + (dotCount == 0 ? "" : " " + dots.toString());
-                                    for (Player player : Bukkit.getOnlinePlayers()) {
-                                        // Play bit note block sound during animation
+                                    for (Player player : Bukkit.getOnlinePlayers()) 
                                         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 1f, 1f);
                                         player.sendTitle(titleText, ChatColor.YELLOW + "Server will stop.", 10, 20, 10);
                                     }
                                     dotCount++;
                                 } else {
                                     cancel();
-                                    // Execute /restart after the dot animation ends
                                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "restart");
                                 }
                             }
